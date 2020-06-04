@@ -9,18 +9,34 @@ part of 'long_break_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LongBreakController on _LongBreakControllerBase, Store {
-  final _$valueAtom = Atom(name: '_LongBreakControllerBase.value');
+  final _$currentTimeAtom = Atom(name: '_LongBreakControllerBase.currentTime');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  String get currentTime {
+    _$currentTimeAtom.reportRead();
+    return super.currentTime;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set currentTime(String value) {
+    _$currentTimeAtom.reportWrite(value, super.currentTime, () {
+      super.currentTime = value;
+    });
+  }
+
+  final _$isTimerRunningAtom =
+      Atom(name: '_LongBreakControllerBase.isTimerRunning');
+
+  @override
+  bool get isTimerRunning {
+    _$isTimerRunningAtom.reportRead();
+    return super.isTimerRunning;
+  }
+
+  @override
+  set isTimerRunning(bool value) {
+    _$isTimerRunningAtom.reportWrite(value, super.isTimerRunning, () {
+      super.isTimerRunning = value;
     });
   }
 
@@ -28,11 +44,33 @@ mixin _$LongBreakController on _LongBreakControllerBase, Store {
       ActionController(name: '_LongBreakControllerBase');
 
   @override
-  void increment() {
+  void startStopTimerRunning() {
     final _$actionInfo = _$_LongBreakControllerBaseActionController.startAction(
-        name: '_LongBreakControllerBase.increment');
+        name: '_LongBreakControllerBase.startStopTimerRunning');
     try {
-      return super.increment();
+      return super.startStopTimerRunning();
+    } finally {
+      _$_LongBreakControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic timer() {
+    final _$actionInfo = _$_LongBreakControllerBaseActionController.startAction(
+        name: '_LongBreakControllerBase.timer');
+    try {
+      return super.timer();
+    } finally {
+      _$_LongBreakControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void onTimerFinish() {
+    final _$actionInfo = _$_LongBreakControllerBaseActionController.startAction(
+        name: '_LongBreakControllerBase.onTimerFinish');
+    try {
+      return super.onTimerFinish();
     } finally {
       _$_LongBreakControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +79,8 @@ mixin _$LongBreakController on _LongBreakControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+currentTime: ${currentTime},
+isTimerRunning: ${isTimerRunning}
     ''';
   }
 }
