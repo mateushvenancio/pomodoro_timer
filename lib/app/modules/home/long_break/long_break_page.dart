@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'long_break_controller.dart';
 
@@ -10,7 +11,33 @@ class LongBreakPage extends StatefulWidget {
 class _LongBreakPageState
     extends ModularState<LongBreakPage, LongBreakController> {
   @override
+  void initState() {
+    controller.timer();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.blue);
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: Observer(builder: (context) {
+              return Text(
+                controller.currentTime,
+                style: TextStyle(fontSize: 50),
+              );
+            }),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          controller.startStopTimerRunning();
+        },
+        child: Icon(Icons.timer),
+      ),
+    );
   }
 }

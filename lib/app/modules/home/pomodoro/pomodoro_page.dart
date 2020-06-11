@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro_timer/app/configurations/page_shift_controller.dart';
 import 'pomodoro_controller.dart';
 
 class PomodoroPage extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro_timer/app/configurations/page_shift_controller.dart';
 
 part 'short_break_controller.g.dart';
 
@@ -10,7 +10,7 @@ class ShortBreakController = _ShortBreakControllerBase
     with _$ShortBreakController;
 
 abstract class _ShortBreakControllerBase with Store {
-  final pageController = Modular.get<PageController>();
+  final pageShiftController = Modular.get<PageShiftController>();
 
   @observable
   String currentTime = '05:00';
@@ -49,10 +49,6 @@ abstract class _ShortBreakControllerBase with Store {
 
   @action
   void onTimerFinish() {
-    pageController.animateToPage(
-      1,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.ease,
-    );
+    pageShiftController.goToPomodoro();
   }
 }

@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro_timer/app/configurations/page_shift_controller.dart';
 
 part 'pomodoro_controller.g.dart';
 
 class PomodoroController = _PomodoroControllerBase with _$PomodoroController;
 
 abstract class _PomodoroControllerBase with Store {
+  final pageShiftController = Modular.get<PageShiftController>();
   final pageController = Modular.get<PageController>();
   int shortBreakCounter = 0;
 
@@ -51,19 +53,10 @@ abstract class _PomodoroControllerBase with Store {
   void onTimerFinish() {
     if (shortBreakCounter >= 2) {
       shortBreakCounter = 0;
-      pageController.animateToPage(
-        2,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.ease,
-      );
-      Modular.get<GlobalKey>();
+      pageShiftController.goToLongBreak();
     } else {
       shortBreakCounter++;
-      pageController.animateToPage(
-        0,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.ease,
-      );
+      pageShiftController.goToShortBreak();
     }
   }
 }

@@ -1,15 +1,15 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro_timer/app/configurations/page_shift_controller.dart';
 
 part 'long_break_controller.g.dart';
 
 class LongBreakController = _LongBreakControllerBase with _$LongBreakController;
 
 abstract class _LongBreakControllerBase with Store {
-  final pageController = Modular.get<PageController>();
+  final pageShiftController = Modular.get<PageShiftController>();
 
   @observable
   String currentTime = '10:00';
@@ -48,10 +48,6 @@ abstract class _LongBreakControllerBase with Store {
 
   @action
   void onTimerFinish() {
-    pageController.animateToPage(
-      1,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.ease,
-    );
+    pageShiftController.goToPomodoro();
   }
 }
