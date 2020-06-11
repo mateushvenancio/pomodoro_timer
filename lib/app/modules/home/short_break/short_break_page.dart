@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pomodoro_timer/app/configurations/page_shift_controller.dart';
 import 'short_break_controller.dart';
 
 class ShortBreakPage extends StatefulWidget {

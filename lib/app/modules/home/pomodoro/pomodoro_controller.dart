@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pomodoro_timer/app/configurations/page_shift_controller.dart';
+import 'package:vibration/vibration.dart';
 
 part 'pomodoro_controller.g.dart';
 
@@ -53,9 +54,19 @@ abstract class _PomodoroControllerBase with Store {
   void onTimerFinish() {
     if (shortBreakCounter >= 2) {
       shortBreakCounter = 0;
+      Vibration.vibrate(
+        duration: 500,
+        repeat: 2,
+        amplitude: 255,
+      );
       pageShiftController.goToLongBreak();
     } else {
       shortBreakCounter++;
+      Vibration.vibrate(
+        duration: 500,
+        repeat: 2,
+        amplitude: 255,
+      );
       pageShiftController.goToShortBreak();
     }
   }

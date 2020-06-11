@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pomodoro_timer/app/configurations/page_shift_controller.dart';
+import 'package:vibration/vibration.dart';
 
 part 'long_break_controller.g.dart';
 
@@ -48,6 +49,11 @@ abstract class _LongBreakControllerBase with Store {
 
   @action
   void onTimerFinish() {
+    Vibration.vibrate(
+      duration: 500,
+      repeat: 2,
+      amplitude: 255,
+    );
     pageShiftController.goToPomodoro();
   }
 }
