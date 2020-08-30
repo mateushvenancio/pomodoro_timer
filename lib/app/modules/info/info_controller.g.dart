@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_controller.dart';
+part of 'info_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'app_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$AppController on _AppControllerBase, Store {
-  final _$valueAtom = Atom(name: '_AppControllerBase.value');
+mixin _$InfoController on _InfoControllerBase, Store {
+  final _$valueAtom = Atom(name: '_InfoControllerBase.value');
 
   @override
   int get value {
@@ -24,17 +24,17 @@ mixin _$AppController on _AppControllerBase, Store {
     });
   }
 
-  final _$_AppControllerBaseActionController =
-      ActionController(name: '_AppControllerBase');
+  final _$_InfoControllerBaseActionController =
+      ActionController(name: '_InfoControllerBase');
 
   @override
   void increment() {
-    final _$actionInfo = _$_AppControllerBaseActionController.startAction(
-        name: '_AppControllerBase.increment');
+    final _$actionInfo = _$_InfoControllerBaseActionController.startAction(
+        name: '_InfoControllerBase.increment');
     try {
       return super.increment();
     } finally {
-      _$_AppControllerBaseActionController.endAction(_$actionInfo);
+      _$_InfoControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
